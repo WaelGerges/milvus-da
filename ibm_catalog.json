@@ -1,0 +1,316 @@
+{
+	"products": [
+	  {
+		"label": "Milvus as-a-Service",
+		"name": "da-ibm-milvus-saas",
+		"product_kind": "solution",
+		"tags": [
+		  "database",
+		  "watsonx.data",
+		  "ibm_created"
+		],
+		"keywords": [
+		  "watson",
+		  "watsonx",
+		  "ai",
+		  "milvus",
+		  "database"
+		],
+		"short_description": "Deploy Milvus services on watsonx.data SaaS to start creating vector databases",
+		"long_description": "The Milvus Deployable Architecture allows for easy and secure creation of Milvus services on IBM Cloud in order to power Retrieval Augmented Generation architectures.",
+		"provider_name": "IBM CIO",
+		"offering_docs_url": "tbd",
+		"support_details": "This is a proof of concept and no official support is given.",
+		"features": [
+		  {
+			"title": "Build Milvus services",
+			"description": "Milvus is an implementation of vector databases to power RAG architectures."
+		  }
+		],
+		"flavors": [
+		  {
+			"label": "saas",
+			"name": "saas",
+			"working_directory": "./",
+			"install_type": "extension",
+			"licenses": [
+			],
+			"architecture": {
+			  "diagrams": [
+				{
+				  "diagram": {
+					"url": "https://raw.github.ibm.com/aad-platform/milvus-da/ecce5800817042aee4667e114cc778340bf1049a/reference-architectures/milvus-platforming-Milvus-saas.svg",
+					"caption": "Milvus services",
+					"type": "image/svg+xml"
+				  },
+				  "description": "Milvus services"
+				}
+			  ]
+			},
+			"release_notes_url": "tbd",
+			"configuration": [
+			  {
+				"key": "ibmcloud_api_key",
+				"required": true,
+				"type": "password"
+			  },
+			  {
+				"key": "milvus_service_name",
+				"required": true,
+				"type": "string"
+			  },
+			  {
+				"key": "milvus_service_bucket_name",
+				"required": true,
+				"type": "string"
+			  },
+			  {
+				"key": "watsonx_data_crn",
+				"required": true,
+				"type": "string"
+			  },
+			  {
+				"key": "resource_group_name",
+				"required": true,
+				"type": "string"
+			  },
+			  {
+				"key": "resource_prefix",
+				"type": "string"
+			  },
+			  {
+				"key": "location",
+				"type": "string",
+				"default_value": "us-south",
+				"options": [
+				  {
+					"displayname": "us-east",
+					"value": "us-east"
+				  },
+				  {
+					"displayname": "us-south",
+					"value": "us-south"
+				  }
+				],
+				"custom_config": {
+  
+				}
+			  },
+			  {
+				"key": "milvus_flavor",
+				"type": "string",
+				"default_value": "small",
+				"options": [
+				  {
+					"displayname": "Small (10 million vectors)",
+					"value": "small"
+				  },
+				  {
+					"displayname": "Medium (50 million vectors)",
+					"value": "medium"
+				  },
+				  {
+					"displayname": "Large (100 million vectors)",
+					"value": "large"
+				  }
+				],
+				"custom_config": {
+  
+				}
+			  }
+			],
+			"iam_permissions": [
+			  {
+				"role_crns": [
+				  "crn:v1:bluemix:public:iam::::role:Editor"
+				],
+				"service_name": "cloud-object-storage"
+			  },
+			  {
+				"role_crns": [
+				  "crn:v1:bluemix:public:iam::::role:Editor"
+				],
+				"service_name": "lakehouse"
+			  }
+			],
+			"compliance": {
+			  "authority": "scc-v3",
+			  "profiles": [
+				  {
+					  "profile_name": "IBM Cloud Framework for Financial Services",
+					  "profile_version": "1.6.0"
+				  }
+			  ]
+			},
+			"outputs": [
+			  {
+				"key": "milvus_grpc_endpoint",
+				"description": "The endpoint of the gRPC service for created Milvus"
+			  },
+			  {
+				"key": "milvus_https_endpoint",
+				"description": "The URL for https service for created Milvus"
+			  },
+			  {
+				"key": "milvus_service_bucket_name",
+				"description": "The bucket name that was created for Milvus service."
+			  },
+			  {
+				"key": "watsonx_data_crn",
+				"description": "The CRN of the watsonx.data instance that Milvus service was deployed to."
+			  },
+			  {
+				"key": "milvus_service_name",
+				"description": "The name of the Milvus service created."
+			  },
+			  {
+				"key": "watsonx_data_lakehouse_url",
+				"description": "The URL in which you can access and use Milvus service created."
+			  }
+			]
+		  },
+		  {
+			"label": "software",
+			"name": "software",
+			"working_directory": "./",
+			"install_type": "fullstack",
+			"licenses": [
+			],
+			"architecture": {
+			  "diagrams": [
+				{
+				  "diagram": {
+					"url": "https://raw.github.ibm.com/aad-platform/milvus-da/ecce5800817042aee4667e114cc778340bf1049a/reference-architectures/milvus-platforming-Milvus-software.svg",
+					"caption": "Milvus services",
+					"type": "image/svg+xml"
+				  },
+				  "description": "Milvus services"
+				}
+			  ]
+			},
+			"release_notes_url": "tbd",
+			"configuration": [
+			  {
+				"key": "ibmcloud_api_key",
+				"required": true,
+				"type": "password"
+			  },
+			  {
+				"key": "milvus_service_name",
+				"required": true,
+				"type": "string"
+			  },
+			  {
+				"key": "milvus_service_bucket_name",
+				"required": true,
+				"type": "string"
+			  },
+			  {
+				"key": "watsonx_data_crn",
+				"required": true,
+				"type": "string"
+			  },
+			  {
+				"key": "resource_group_name",
+				"required": true,
+				"type": "string"
+			  },
+			  {
+				"key": "resource_prefix",
+				"type": "string"
+			  },
+			  {
+				"key": "location",
+				"type": "string",
+				"default_value": "us-south",
+				"options": [
+				  {
+					"displayname": "us-east",
+					"value": "us-east"
+				  },
+				  {
+					"displayname": "us-south",
+					"value": "us-south"
+				  }
+				],
+				"custom_config": {
+  
+				}
+			  },
+			  {
+				"key": "milvus_flavor",
+				"type": "string",
+				"default_value": "small",
+				"options": [
+				  {
+					"displayname": "Small (10 million vectors)",
+					"value": "small"
+				  },
+				  {
+					"displayname": "Medium (50 million vectors)",
+					"value": "medium"
+				  },
+				  {
+					"displayname": "Large (100 million vectors)",
+					"value": "large"
+				  }
+				],
+				"custom_config": {
+  
+				}
+			  }
+			],
+			"iam_permissions": [
+			  {
+				"role_crns": [
+				  "crn:v1:bluemix:public:iam::::role:Editor"
+				],
+				"service_name": "cloud-object-storage"
+			  },
+			  {
+				"role_crns": [
+				  "crn:v1:bluemix:public:iam::::role:Editor"
+				],
+				"service_name": "lakehouse"
+			  }
+			],
+			"compliance": {
+			  "authority": "scc-v3",
+			  "profiles": [
+				  {
+					  "profile_name": "IBM Cloud Framework for Financial Services",
+					  "profile_version": "1.6.0"
+				  }
+			  ]
+			},
+			"outputs": [
+			  {
+				"key": "milvus_grpc_endpoint",
+				"description": "The endpoint of the gRPC service for created Milvus"
+			  },
+			  {
+				"key": "milvus_https_endpoint",
+				"description": "The URL for https service for created Milvus"
+			  },
+			  {
+				"key": "milvus_service_bucket_name",
+				"description": "The bucket name that was created for Milvus service."
+			  },
+			  {
+				"key": "watsonx_data_crn",
+				"description": "The CRN of the watsonx.data instance that Milvus service was deployed to."
+			  },
+			  {
+				"key": "milvus_service_name",
+				"description": "The name of the Milvus service created."
+			  },
+			  {
+				"key": "watsonx_data_lakehouse_url",
+				"description": "The URL in which you can access and use Milvus service created."
+			  }
+			]
+		  }
+		]
+	  }
+	]
+  }
